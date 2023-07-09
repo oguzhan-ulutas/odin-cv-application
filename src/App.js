@@ -29,6 +29,12 @@ export class App extends Component {
       },
     };
   }
+
+  openForm = (formClass) => {
+    const form = document.querySelector(`.${formClass}`);
+    console.log(form);
+    form.classList.add("active");
+  };
   render() {
     return (
       <div className="container">
@@ -36,7 +42,7 @@ export class App extends Component {
         <div className="general-info">
           <h2>General Info</h2>
           <div>
-            <button>Add</button>
+            <button onClick={() => this.openForm("form-general")}>Add</button>
             <button>Edit</button>
           </div>
           <FormGeneralInfo />
