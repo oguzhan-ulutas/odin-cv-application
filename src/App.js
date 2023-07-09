@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/footer";
+import { FormGeneralInfo } from "./components/forms";
 
 export class App extends Component {
   constructor() {
@@ -34,15 +35,26 @@ export class App extends Component {
         <h1 className="header">CV App</h1>
         <div className="general-info">
           <h2>General Info</h2>
-          <button>Add</button>
+          <div>
+            <button>Add</button>
+            <button>Edit</button>
+          </div>
+          <FormGeneralInfo />
         </div>
         <div className="education">
           <h2>Education</h2>
-          <button>Add</button>
+          <div>
+            <button>Add</button>
+            <button>Edit</button>
+          </div>
         </div>
+
         <div className="experience">
           <h2>Experience</h2>
-          <button>Add</button>
+          <div>
+            <button>Add</button>
+            <button>Edit</button>
+          </div>
         </div>
         <Footer />
       </div>
