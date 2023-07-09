@@ -18,9 +18,37 @@ code {
     monospace;
 }
 
-#content {
+#content,
+.container {
   min-width: 100vw;
   min-height: 100vh;
   margin: 0px;
   padding: 0px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.footer {
+  align-self: center;
+  font-weight: 600;
+  flex-grow: 0;
+  padding: 1rem;
+}
+.header {
+  font-size: 5rem;
+  margin: 0;
+  padding: 0;
+  height: 6rem;
+  flex-grow: 0;
+}
+
+.general-info,
+.education,
+.experience {
+  flex-grow: 1;
+  border-bottom: solid 1px #f4f4;
 }

@@ -31,7 +31,7 @@ export class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>CV App</h1>
+        <h1 className="header">CV App</h1>
         <div className="general-info">
           <h2>General Info</h2>
           <button>Add</button>
