@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/footer";
-import { FormGeneralInfo } from "./components/forms";
+import { FormGeneralInfo, Education } from "./components/forms";
 import { RenderedGeneralInfo } from "./components/rendered-cv";
 
 export class App extends Component {
@@ -9,7 +9,6 @@ export class App extends Component {
     super();
     this.state = {
       generalInfo: {
-        id: uniqid(),
         firstName: "",
         lastName: "",
         eMail: "",
@@ -57,6 +56,31 @@ export class App extends Component {
       },
     });
   };
+
+  handleChange = (e, section, field) => {
+    const keys = Object.keys(this.state[section]);
+    const keysRest = keys.filter((item) => item !== field);
+
+    let objRest = {};
+    keysRest.forEach((key) => {
+      objRest[key] = this.state[section][key];
+    });
+
+    this.setState({
+      [`${section}`]: Object.assign(
+        {},
+        {
+          [`${field}`]: e.target.value,
+        },
+        objRest
+      ),
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   logger = () => {
     console.log(this.state);
   };
@@ -80,9 +104,14 @@ export class App extends Component {
         <div className="education">
           <h2>Education</h2>
           <div>
-            <button>Add</button>
-            <button>Edit</button>
+            <button onClick={() => this.openForm("form-education")}>Add</button>
+            <button onClick={this.logger}>Edit</button>
           </div>
+          <Education
+            closeForm={this.closeForm}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
 
         <div className="experience">

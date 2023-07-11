@@ -54,3 +54,66 @@ export class FormGeneralInfo extends Component {
     );
   }
 }
+
+export class Education extends Component {
+  render() {
+    return (
+      <div className="form-education">
+        <form id="form-education" onSubmit={this.props.handleSubmit}>
+          <div>
+            <label htmlFor="institution">INSTITUTION</label>
+            <input
+              type="text"
+              id="institution"
+              name="institution"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "institution");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-from">START DATE</label>
+            <input
+              type="date"
+              id="date-from"
+              name="date-from"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "dateFrom");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-to">END DATE</label>
+            <input
+              type="date"
+              id="date-to"
+              name="date-to"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "dateTo");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="qualificationl">QUALIFICATION</label>
+            <input
+              type="text"
+              id="qualification"
+              name="qualification"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "qualification");
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={() => {
+              this.props.closeForm("form-education");
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
