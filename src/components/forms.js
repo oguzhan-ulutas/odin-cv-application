@@ -1,15 +1,10 @@
-import { render } from "@testing-library/react";
 import React, { Component } from "react";
 
 export class FormGeneralInfo extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div className="form-general">
-        <form id="form-general">
+        <form id="form-general" onSubmit={this.props.addGeneralInfo}>
           <div>
             <label htmlFor="first-name">FIRST NAME</label>
             <input
@@ -17,7 +12,6 @@ export class FormGeneralInfo extends Component {
               id="first-name"
               placeholder="* Thor..."
               name="first-name"
-              required=""
             />
           </div>
           <div>
@@ -36,7 +30,6 @@ export class FormGeneralInfo extends Component {
               id="user-email"
               placeholder="* example@example.com"
               name="user-email"
-              required=""
             />
           </div>
           <div>
@@ -48,7 +41,14 @@ export class FormGeneralInfo extends Component {
               name="user-tel"
             />
           </div>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            onClick={() => {
+              this.props.closeForm("form-general");
+            }}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );

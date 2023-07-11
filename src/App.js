@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/footer";
 import { FormGeneralInfo } from "./components/forms";
@@ -18,7 +18,7 @@ export class App extends Component {
         institution: "",
         dateFrom: "",
         dateTo: "",
-        qalification: "",
+        qualification: "",
       },
       experience: {
         company: "",
@@ -29,12 +29,33 @@ export class App extends Component {
       },
     };
   }
-
+  // Opens related form
   openForm = (formClass) => {
-    const form = document.querySelector(`.${formClass}`);
-    console.log(form);
-    form.classList.add("active");
+    const formDiv = document.querySelector(`.${formClass}`);
+    formDiv.classList.add("active");
   };
+
+  closeForm = (formClass) => {
+    const formDiv = document.querySelector(`.${formClass}`);
+    formDiv.classList.remove("active");
+  };
+
+  addGeneralInfo = (e) => {
+    e.preventDefault();
+
+    this.setState({
+      generalInfo: {
+        firstName: e.target[0].value,
+        lastName: e.target[1].value,
+        eMail: e.target[2].value,
+        tel: e.target[3].value,
+      },
+    });
+  };
+  logger = () => {
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div className="container">
@@ -43,9 +64,13 @@ export class App extends Component {
           <h2>General Info</h2>
           <div>
             <button onClick={() => this.openForm("form-general")}>Add</button>
-            <button>Edit</button>
+            <button onClick={this.logger}>Edit</button>
           </div>
-          <FormGeneralInfo />
+          <FormGeneralInfo
+            closeForm={this.closeForm}
+            addGeneralInfo={this.addGeneralInfo}
+            handleChange={this.handleChange}
+          />
         </div>
         <div className="education">
           <h2>Education</h2>
