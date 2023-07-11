@@ -69,7 +69,7 @@ export class App extends Component {
           <h2>General Info</h2>
           <div>
             <button onClick={() => this.openForm("form-general")}>Add</button>
-            <button onClick={this.logger}>Edit</button>
+            <button onClick={() => this.openForm("form-general")}>Edit</button>
           </div>
           <FormGeneralInfo
             closeForm={this.closeForm}
