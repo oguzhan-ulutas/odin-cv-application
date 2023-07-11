@@ -2,31 +2,36 @@ import React, { Component } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/footer";
 import { FormGeneralInfo } from "./components/forms";
+import { RenderedGeneralInfo } from "./components/rendered-cv";
 
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      id: uniqid(),
       generalInfo: {
+        id: uniqid(),
         firstName: "",
         lastName: "",
         eMail: "",
         tel: "",
       },
       education: {
+        id: uniqid(),
         institution: "",
         dateFrom: "",
         dateTo: "",
         qualification: "",
       },
       experience: {
+        id: uniqid(),
         company: "",
         title: "",
         dateFrom: "",
         dateTo: "",
         tasks: "",
       },
+      educations: [],
+      experiences: [],
     };
   }
   // Opens related form
@@ -69,8 +74,8 @@ export class App extends Component {
           <FormGeneralInfo
             closeForm={this.closeForm}
             addGeneralInfo={this.addGeneralInfo}
-            handleChange={this.handleChange}
           />
+          <RenderedGeneralInfo state={this.state} />
         </div>
         <div className="education">
           <h2>Education</h2>
