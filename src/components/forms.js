@@ -55,11 +55,16 @@ export class FormGeneralInfo extends Component {
   }
 }
 
-export class Education extends Component {
+export class FormEducation extends Component {
   render() {
     return (
       <div className="form-education">
-        <form id="form-education" onSubmit={this.props.handleSubmit}>
+        <form
+          id="form-education"
+          onSubmit={(e) => {
+            this.props.handleSubmit(e, "education", "educations");
+          }}
+        >
           <div>
             <label htmlFor="institution">INSTITUTION</label>
             <input
@@ -94,7 +99,7 @@ export class Education extends Component {
             />
           </div>
           <div>
-            <label htmlFor="qualificationl">QUALIFICATION</label>
+            <label htmlFor="qualification">QUALIFICATION</label>
             <input
               type="text"
               id="qualification"
@@ -108,6 +113,85 @@ export class Education extends Component {
             type="submit"
             onClick={() => {
               this.props.closeForm("form-education");
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export class FormExperience extends Component {
+  render() {
+    return (
+      <div className="form-experience">
+        <form
+          id="form-experience"
+          onSubmit={(e) =>
+            this.props.handleSubmit(e, "experience", "experiences")
+          }
+        >
+          <div>
+            <label htmlFor="company">COMPANY</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              onChange={(e) => {
+                this.props.handleChange(e, "experience", "company");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="title">TITLE</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              onChange={(e) => {
+                this.props.handleChange(e, "experience", "title");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-from-experience">START DATE</label>
+            <input
+              type="date"
+              id="date-from-experience"
+              name="date-from-experience"
+              onChange={(e) => {
+                this.props.handleChange(e, "experience", "dateFrom");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-to-experience">END DATE</label>
+            <input
+              type="date"
+              id="date-to-experience"
+              name="date-to-experience"
+              onChange={(e) => {
+                this.props.handleChange(e, "experience", "dateTo");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="tasks">TASKS</label>
+            <input
+              type="text"
+              id="tasks"
+              name="tasks"
+              onChange={(e) => {
+                this.props.handleChange(e, "experience", "tasks");
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={() => {
+              this.props.closeForm("form-experience");
             }}
           >
             Submit

@@ -27,7 +27,6 @@ const RenderedGeneralInfo = (props) => {
 
 const RenderedEducation = (props) => {
   const { educations } = props.state;
-  console.log(educations);
   return (
     <div>
       {educations.map((education) => {
@@ -57,4 +56,6 @@ const RenderedEducation = (props) => {
   );
 };
 
-export { RenderedGeneralInfo, RenderedEducation };
+const RenderedExperience = (props) => {};
+
+export { RenderedGeneralInfo, RenderedEducation, RenderedExperience };

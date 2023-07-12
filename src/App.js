@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/Footer";
-import { FormGeneralInfo, Education } from "./components/Forms";
+import {
+  FormGeneralInfo,
+  FormEducation,
+  FormExperience,
+} from "./components/Forms";
 import {
   RenderedGeneralInfo,
   RenderedEducation,
@@ -70,27 +74,30 @@ export class App extends Component {
     });
 
     this.setState({
-      [`${section}`]: Object.assign(
+      [section]: Object.assign(
         {},
         {
-          [`${field}`]: e.target.value,
+          [field]: e.target.value,
         },
         objRest
       ),
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e, section, arraySection) => {
     e.preventDefault();
+
+    const keys = Object.keys(this.state[section]).filter(
+      (item) => item !== "id"
+    );
+    console.log(keys);
+
+    let obj = {};
+    keys.forEach((key) => (obj[key] = ""));
+
     this.setState({
-      educations: [...this.state.educations, this.state.education],
-      education: {
-        id: uniqid(),
-        institution: "",
-        dateFrom: "",
-        dateTo: "",
-        qualification: "",
-      },
+      [arraySection]: [...this.state[arraySection], this.state[section]],
+      [section]: Object.assign({}, { id: uniqid() }, obj),
     });
   };
 
@@ -120,7 +127,7 @@ export class App extends Component {
             <button onClick={() => this.openForm("form-education")}>Add</button>
             <button onClick={this.logger}>Edit</button>
           </div>
-          <Education
+          <FormEducation
             closeForm={this.closeForm}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
@@ -131,9 +138,16 @@ export class App extends Component {
         <div className="experience">
           <h2>Experience</h2>
           <div>
-            <button>Add</button>
+            <button onClick={() => this.openForm("form-experience")}>
+              Add
+            </button>
             <button>Edit</button>
           </div>
+          <FormExperience
+            closeForm={this.closeForm}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
         <Footer />
       </div>

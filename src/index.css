@@ -54,7 +54,8 @@ code {
 }
 
 #form-general,
-#form-education {
+#form-education,
+#form-experience {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,7 +65,8 @@ code {
   padding: 1rem;
 }
 #form-general div,
-#form-education div {
+#form-education div,
+#form-experience div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,7 +74,8 @@ code {
   gap: 1rem;
 }
 .form-general,
-.form-education {
+.form-education,
+.form-experience {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -85,6 +88,7 @@ code {
   border-radius: 10px;
 }
 .form-general.active,
-.form-education.active {
+.form-education.active,
+.form-experience.active {
   transform: translate(-50%, -50%) scale(1);
 }
