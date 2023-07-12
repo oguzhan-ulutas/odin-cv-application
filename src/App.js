@@ -17,6 +17,7 @@ export class App extends Component {
     super();
     this.state = {
       generalInfo: {
+        id: uniqid(),
         firstName: "",
         lastName: "",
         eMail: "",
@@ -39,6 +40,7 @@ export class App extends Component {
       },
       educations: [],
       experiences: [],
+      generalInfos: [],
     };
   }
   // Opens related form
@@ -50,19 +52,6 @@ export class App extends Component {
   closeForm = (formClass) => {
     const formDiv = document.querySelector(`.${formClass}`);
     formDiv.classList.remove("active");
-  };
-
-  addGeneralInfo = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      generalInfo: {
-        firstName: e.target[0].value,
-        lastName: e.target[1].value,
-        eMail: e.target[2].value,
-        tel: e.target[3].value,
-      },
-    });
   };
 
   handleChange = (e, section, field) => {
@@ -117,7 +106,8 @@ export class App extends Component {
           </div>
           <FormGeneralInfo
             closeForm={this.closeForm}
-            addGeneralInfo={this.addGeneralInfo}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
           />
           <RenderedGeneralInfo state={this.state} />
         </div>
@@ -125,7 +115,7 @@ export class App extends Component {
           <h2>Education</h2>
           <div>
             <button onClick={() => this.openForm("form-education")}>Add</button>
-            <button onClick={this.logger}>Edit</button>
+            <button>Edit</button>
           </div>
           <FormEducation
             closeForm={this.closeForm}

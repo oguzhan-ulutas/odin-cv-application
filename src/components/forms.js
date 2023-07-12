@@ -4,7 +4,12 @@ export class FormGeneralInfo extends Component {
   render() {
     return (
       <div className="form-general">
-        <form id="form-general" onSubmit={this.props.addGeneralInfo}>
+        <form
+          id="form-general"
+          onSubmit={(e) => {
+            this.props.handleSubmit(e, "generalInfo", "generalInfos");
+          }}
+        >
           <div>
             <label htmlFor="first-name">FIRST NAME</label>
             <input
@@ -12,6 +17,9 @@ export class FormGeneralInfo extends Component {
               id="first-name"
               placeholder="* Thor..."
               name="first-name"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "firstName");
+              }}
             />
           </div>
           <div>
@@ -21,6 +29,9 @@ export class FormGeneralInfo extends Component {
               id="last-name"
               placeholder="Odinson"
               name="last-name"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "lastName");
+              }}
             />
           </div>
           <div>
@@ -30,6 +41,9 @@ export class FormGeneralInfo extends Component {
               id="user-email"
               placeholder="* example@example.com"
               name="user-email"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "eMail");
+              }}
             />
           </div>
           <div>
@@ -39,6 +53,9 @@ export class FormGeneralInfo extends Component {
               id="user-tel"
               placeholder="111-111-11-11"
               name="user-tel"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "tel");
+              }}
             />
           </div>
           <button

@@ -1,26 +1,33 @@
 import React from "react";
 
 const RenderedGeneralInfo = (props) => {
-  const { state } = props;
+  const { generalInfos } = props.state;
 
   return (
-    <div>
-      <div>
-        <div>Name :</div>
-        <div>{state.generalInfo.firstName}</div>
-      </div>
-      <div>
-        <div>Last Name :</div>
-        <div>{state.generalInfo.lastName}</div>
-      </div>
-      <div>
-        <div>E-mail :</div>
-        <div>{state.generalInfo.eMail}</div>
-      </div>
-      <div>
-        <div>Tel :</div>
-        <div>{state.generalInfo.tel}</div>
-      </div>
+    <div className="general-info-div">
+      {generalInfos.map((generalInfo) => {
+        const { id, firstName, lastName, eMail, tel } = generalInfo;
+        return (
+          <div key={id}>
+            <div>
+              <div>Name :</div>
+              <div>{firstName}</div>{" "}
+            </div>
+            <div>
+              <div>Last Name :</div>
+              <div>{lastName}</div>{" "}
+            </div>
+            <div>
+              <div>E-mail :</div>
+              <div>{eMail}</div>{" "}
+            </div>
+            <div>
+              <div>Tel :</div>
+              <div>{tel}</div>{" "}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
