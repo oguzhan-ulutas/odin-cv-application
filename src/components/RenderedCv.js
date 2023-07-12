@@ -56,6 +56,39 @@ const RenderedEducation = (props) => {
   );
 };
 
-const RenderedExperience = (props) => {};
+const RenderedExperience = (props) => {
+  const { experiences } = props.state;
+  return (
+    <div>
+      {experiences.map((experience) => {
+        const { id, company, title, dateFrom, dateTo, tasks } = experience;
+        return (
+          <div key={id}>
+            <div>
+              <div>Company :</div>
+              <div>{company}</div>{" "}
+            </div>
+            <div>
+              <div>Title :</div>
+              <div>{title}</div>{" "}
+            </div>
+            <div>
+              <div>Start Date :</div>
+              <div>{dateFrom}</div>{" "}
+            </div>
+            <div>
+              <div>End Date :</div>
+              <div>{dateTo}</div>{" "}
+            </div>
+            <div>
+              <div>Tasks :</div>
+              <div>{tasks}</div>{" "}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 export { RenderedGeneralInfo, RenderedEducation, RenderedExperience };

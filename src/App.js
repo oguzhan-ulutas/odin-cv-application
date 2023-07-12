@@ -9,6 +9,7 @@ import {
 import {
   RenderedGeneralInfo,
   RenderedEducation,
+  RenderedExperience,
 } from "./components/RenderedCv";
 
 export class App extends Component {
@@ -90,7 +91,6 @@ export class App extends Component {
     const keys = Object.keys(this.state[section]).filter(
       (item) => item !== "id"
     );
-    console.log(keys);
 
     let obj = {};
     keys.forEach((key) => (obj[key] = ""));
@@ -148,6 +148,7 @@ export class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
+          <RenderedExperience state={this.state} />
         </div>
         <Footer />
       </div>
