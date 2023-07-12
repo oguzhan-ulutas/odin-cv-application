@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
-import Footer from "./components/footer";
-import { FormGeneralInfo, Education } from "./components/forms";
-import { RenderedGeneralInfo } from "./components/rendered-cv";
+import Footer from "./components/Footer";
+import { FormGeneralInfo, Education } from "./components/Forms";
+import {
+  RenderedGeneralInfo,
+  RenderedEducation,
+} from "./components/RenderedCv";
 
 export class App extends Component {
   constructor() {
@@ -79,6 +82,16 @@ export class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      educations: [...this.state.educations, this.state.education],
+      education: {
+        id: uniqid(),
+        institution: "",
+        dateFrom: "",
+        dateTo: "",
+        qualification: "",
+      },
+    });
   };
 
   logger = () => {
@@ -112,6 +125,7 @@ export class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
+          <RenderedEducation state={this.state} />
         </div>
 
         <div className="experience">
