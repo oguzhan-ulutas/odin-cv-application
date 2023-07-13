@@ -72,6 +72,78 @@ export class FormGeneralInfo extends Component {
   }
 }
 
+export class FormGeneralInfoEdit extends Component {
+  render() {
+    return (
+      <div className="form-general">
+        <form
+          id="form-general"
+          onSubmit={(e) => {
+            this.props.handleSubmit(e, "generalInfo", "generalInfos");
+          }}
+        >
+          <div>
+            <label htmlFor="first-name">FIRST NAME</label>
+            <input
+              type="text"
+              id="first-name"
+              placeholder="* Thor..."
+              name="first-name"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "firstName");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="last-name">LAST NAME</label>
+            <input
+              type="text"
+              id="last-name"
+              placeholder="Odinson"
+              name="last-name"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "lastName");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="user-email">EMAIL</label>
+            <input
+              type="email"
+              id="user-email"
+              placeholder="* example@example.com"
+              name="user-email"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "eMail");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="user-tel">PHONE NUMBER</label>
+            <input
+              type="tel"
+              id="user-tel"
+              placeholder="111-111-11-11"
+              name="user-tel"
+              onChange={(e) => {
+                this.props.handleChange(e, "generalInfo", "tel");
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={() => {
+              this.props.closeForm("form-general");
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
 export class FormEducation extends Component {
   render() {
     return (

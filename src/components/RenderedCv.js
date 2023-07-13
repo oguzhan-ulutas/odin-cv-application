@@ -25,6 +25,12 @@ const RenderedGeneralInfo = (props) => {
               <div>Tel :</div>
               <div>{tel}</div>{" "}
             </div>
+            <div>
+              <button onClick={() => this.openForm("form-general")}>
+                Edit
+              </button>
+              <button>Delete</button>
+            </div>
           </div>
         );
       })}
@@ -55,6 +61,12 @@ const RenderedEducation = (props) => {
             <div>
               <div>Qualification :</div>
               <div>{qualification}</div>{" "}
+            </div>
+            <div>
+              <button onClick={() => this.openForm("form-general")}>
+                Edit
+              </button>
+              <button>Delete</button>
             </div>
           </div>
         );
@@ -90,6 +102,12 @@ const RenderedExperience = (props) => {
             <div>
               <div>Tasks :</div>
               <div>{tasks}</div>{" "}
+            </div>
+            <div>
+              <button onClick={() => this.openForm("form-general")}>
+                Edit
+              </button>
+              <button>Delete</button>
             </div>
           </div>
         );

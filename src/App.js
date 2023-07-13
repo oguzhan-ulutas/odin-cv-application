@@ -3,6 +3,7 @@ import uniqid from "uniqid";
 import Footer from "./components/Footer";
 import {
   FormGeneralInfo,
+  FormGeneralInfoEdit,
   FormEducation,
   FormExperience,
 } from "./components/Forms";
@@ -90,6 +91,8 @@ export class App extends Component {
     });
   };
 
+  handleEdit = () => {};
+
   logger = () => {
     console.log(this.state);
   };
@@ -99,23 +102,23 @@ export class App extends Component {
       <div className="container">
         <h1 className="header">CV App</h1>
         <div className="general-info">
-          <h2>General Info</h2>
           <div>
+            <h2>General Info</h2>
             <button onClick={() => this.openForm("form-general")}>Add</button>
-            <button onClick={() => this.openForm("form-general")}>Edit</button>
           </div>
           <FormGeneralInfo
             closeForm={this.closeForm}
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
           />
+          <FormGeneralInfoEdit />
           <RenderedGeneralInfo state={this.state} />
         </div>
+
         <div className="education">
-          <h2>Education</h2>
           <div>
+            <h2>Education</h2>
             <button onClick={() => this.openForm("form-education")}>Add</button>
-            <button>Edit</button>
           </div>
           <FormEducation
             closeForm={this.closeForm}
@@ -126,12 +129,11 @@ export class App extends Component {
         </div>
 
         <div className="experience">
-          <h2>Experience</h2>
           <div>
+            <h2>Experience</h2>
             <button onClick={() => this.openForm("form-experience")}>
               Add
             </button>
-            <button>Edit</button>
           </div>
           <FormExperience
             closeForm={this.closeForm}
