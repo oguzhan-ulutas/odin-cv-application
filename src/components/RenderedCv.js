@@ -35,7 +35,15 @@ const RenderedGeneralInfo = (props) => {
               >
                 Edit
               </button>
-              <button>Delete</button>
+              <button
+                className={`dele-${id}`}
+                onClick={(e) => {
+                  props.setComponentId(e);
+                  props.handleDelete("generalInfo", "generalInfos");
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         );
@@ -78,7 +86,7 @@ const RenderedEducation = (props) => {
               >
                 Edit
               </button>
-              <button>Delete</button>
+              <button className={`dele-${id}`}>Delete</button>
             </div>
           </div>
         );
@@ -125,7 +133,14 @@ const RenderedExperience = (props) => {
               >
                 Edit
               </button>
-              <button>Delete</button>
+              <button
+                className={`dele-${id}`}
+                onClick={() => {
+                  props.setComponentId();
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         );

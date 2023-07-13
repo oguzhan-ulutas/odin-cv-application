@@ -94,13 +94,18 @@ export class App extends Component {
     });
   };
 
+  setComponentId = (e) => {
+    this.componentId = e.target.className.substr(5);
+  };
+
+  getComponentId = () => this.componentId;
+
   handleEdit = (e, section, arraySection) => {
     e.preventDefault();
-    this.state[arraySection].forEach((item) => {
+    this.state[arraySection].forEach((item, i, arr) => {
       if (item.id === this.getComponentId()) {
-        const index = this.state[arraySection].indexOf(item);
-        const array = this.state[arraySection];
-        array[index] = this.state[section];
+        const array = arr;
+        array[i] = this.state[section];
 
         const keys = Object.keys(this.state[section]).filter(
           (item) => item !== "id"
@@ -116,11 +121,22 @@ export class App extends Component {
     });
   };
 
-  setComponentId = (e) => {
-    this.componentId = e.target.className.substr(5);
-  };
+  handleDelete = (section, arraySection) => {
+    this.state[arraySection].forEach((item, i, arr) => {
+      if (item.id === this.getComponentId()) {
+        const keys = Object.keys(this.state[section]).filter(
+          (item) => item !== "id"
+        );
+        let obj = {};
+        keys.forEach((key) => (obj[key] = ""));
 
-  getComponentId = () => this.componentId;
+        this.setState({
+          [arraySection]: arr.filter((value) => value !== item),
+          [section]: Object.assign({}, { id: uniqid() }, obj),
+        });
+      }
+    });
+  };
 
   logger = () => {
     console.log(this.state);
@@ -149,6 +165,7 @@ export class App extends Component {
             state={this.state}
             openForm={this.openForm}
             setComponentId={this.setComponentId}
+            handleDelete={this.handleDelete}
           />
         </div>
 
@@ -171,6 +188,7 @@ export class App extends Component {
             state={this.state}
             openForm={this.openForm}
             setComponentId={this.setComponentId}
+            handleDelete={this.handleDelete}
           />
         </div>
 
@@ -195,6 +213,7 @@ export class App extends Component {
             state={this.state}
             openForm={this.openForm}
             setComponentId={this.setComponentId}
+            handleDelete={this.handleDelete}
           />
         </div>
         <Footer />
