@@ -26,7 +26,13 @@ const RenderedGeneralInfo = (props) => {
               <div>{tel}</div>{" "}
             </div>
             <div>
-              <button onClick={() => this.openForm("form-general")}>
+              <button
+                className={`edit-${id}`}
+                onClick={(e) => {
+                  props.openForm("form-general-edit");
+                  props.setComponentId(e);
+                }}
+              >
                 Edit
               </button>
               <button>Delete</button>
@@ -41,7 +47,7 @@ const RenderedGeneralInfo = (props) => {
 const RenderedEducation = (props) => {
   const { educations } = props.state;
   return (
-    <div>
+    <div className="educations-div">
       {educations.map((education) => {
         const { id, institution, dateFrom, dateTo, qualification } = education;
         return (
@@ -78,7 +84,7 @@ const RenderedEducation = (props) => {
 const RenderedExperience = (props) => {
   const { experiences } = props.state;
   return (
-    <div>
+    <div className="experiences-div">
       {experiences.map((experience) => {
         const { id, company, title, dateFrom, dateTo, tasks } = experience;
         return (
@@ -104,7 +110,7 @@ const RenderedExperience = (props) => {
               <div>{tasks}</div>{" "}
             </div>
             <div>
-              <button onClick={() => this.openForm("form-general")}>
+              <button onClick={() => this.openForm("form-general-edit")}>
                 Edit
               </button>
               <button>Delete</button>

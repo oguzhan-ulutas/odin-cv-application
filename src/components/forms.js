@@ -75,11 +75,11 @@ export class FormGeneralInfo extends Component {
 export class FormGeneralInfoEdit extends Component {
   render() {
     return (
-      <div className="form-general">
+      <div className="form-general-edit">
         <form
-          id="form-general"
+          id="form-general-edit"
           onSubmit={(e) => {
-            this.props.handleSubmit(e, "generalInfo", "generalInfos");
+            this.props.handleEdit(e, "generalInfo", "generalInfos");
           }}
         >
           <div>
@@ -133,10 +133,10 @@ export class FormGeneralInfoEdit extends Component {
           <button
             type="submit"
             onClick={() => {
-              this.props.closeForm("form-general");
+              this.props.closeForm("form-general-edit");
             }}
           >
-            Submit
+            Edit
           </button>
         </form>
       </div>

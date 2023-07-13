@@ -43,6 +43,7 @@ export class App extends Component {
       experiences: [],
       generalInfos: [],
     };
+    this.componentId = "";
   }
   // Opens related form
   openForm = (formClass) => {
@@ -91,7 +92,35 @@ export class App extends Component {
     });
   };
 
-  handleEdit = () => {};
+  handleEdit = (e, section, arraySection) => {
+    e.preventDefault();
+    this.state[arraySection].forEach((item) => {
+      if (item.id === this.getComponentId()) {
+        const index = this.state[arraySection].indexOf(item);
+        const array = this.state[arraySection];
+        console.log(array);
+        array[index] = this.state[section];
+        console.log(array);
+
+        const keys = Object.keys(this.state[section]).filter(
+          (item) => item !== "id"
+        );
+
+        let obj = {};
+        keys.forEach((key) => (obj[key] = ""));
+        this.setState({
+          [arraySection]: array,
+          [section]: Object.assign({}, { id: uniqid() }, obj),
+        });
+      }
+    });
+  };
+
+  setComponentId = (e) => {
+    this.componentId = e.target.className.substr(5);
+  };
+
+  getComponentId = () => this.componentId;
 
   logger = () => {
     console.log(this.state);
@@ -111,8 +140,17 @@ export class App extends Component {
             handleSubmit={this.handleSubmit}
             handleChange={this.handleChange}
           />
-          <FormGeneralInfoEdit />
-          <RenderedGeneralInfo state={this.state} />
+          <FormGeneralInfoEdit
+            handleEdit={this.handleEdit}
+            handleChange={this.handleChange}
+            closeForm={this.closeForm}
+            getComponentId={this.getComponentId}
+          />
+          <RenderedGeneralInfo
+            state={this.state}
+            openForm={this.openForm}
+            setComponentId={this.setComponentId}
+          />
         </div>
 
         <div className="education">

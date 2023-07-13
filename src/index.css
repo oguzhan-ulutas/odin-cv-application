@@ -54,6 +54,7 @@ code {
 }
 
 #form-general,
+#form-general-edit,
 #form-education,
 #form-experience {
   display: flex;
@@ -65,6 +66,7 @@ code {
   padding: 1rem;
 }
 #form-general div,
+#form-general-edit div,
 #form-education div,
 #form-experience div {
   display: flex;
@@ -74,6 +76,7 @@ code {
   gap: 1rem;
 }
 .form-general,
+.form-general-edit,
 .form-education,
 .form-experience {
   position: fixed;
@@ -88,6 +91,7 @@ code {
   border-radius: 10px;
 }
 .form-general.active,
+.form-general-edit.active,
 .form-education.active,
 .form-experience.active {
   transform: translate(-50%, -50%) scale(1);
