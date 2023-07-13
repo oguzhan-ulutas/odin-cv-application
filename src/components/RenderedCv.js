@@ -116,7 +116,13 @@ const RenderedExperience = (props) => {
               <div>{tasks}</div>{" "}
             </div>
             <div>
-              <button onClick={() => this.openForm("form-general-edit")}>
+              <button
+                className={`edit-${id}`}
+                onClick={(e) => {
+                  props.openForm("form-experience-edit");
+                  props.setComponentId(e);
+                }}
+              >
                 Edit
               </button>
               <button>Delete</button>

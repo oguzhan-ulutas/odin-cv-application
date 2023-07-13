@@ -7,6 +7,7 @@ import {
   FormEducation,
   FormEducationEdit,
   FormExperience,
+  FormExperienceEdit,
 } from "./components/Forms";
 import {
   RenderedGeneralInfo,
@@ -185,7 +186,16 @@ export class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
-          <RenderedExperience state={this.state} />
+          <FormExperienceEdit
+            handleEdit={this.handleEdit}
+            handleChange={this.handleChange}
+            closeForm={this.closeForm}
+          />
+          <RenderedExperience
+            state={this.state}
+            openForm={this.openForm}
+            setComponentId={this.setComponentId}
+          />
         </div>
         <Footer />
       </div>
