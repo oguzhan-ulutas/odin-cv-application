@@ -5,6 +5,7 @@ import {
   FormGeneralInfo,
   FormGeneralInfoEdit,
   FormEducation,
+  FormEducationEdit,
   FormExperience,
 } from "./components/Forms";
 import {
@@ -98,9 +99,7 @@ export class App extends Component {
       if (item.id === this.getComponentId()) {
         const index = this.state[arraySection].indexOf(item);
         const array = this.state[arraySection];
-        console.log(array);
         array[index] = this.state[section];
-        console.log(array);
 
         const keys = Object.keys(this.state[section]).filter(
           (item) => item !== "id"
@@ -144,7 +143,6 @@ export class App extends Component {
             handleEdit={this.handleEdit}
             handleChange={this.handleChange}
             closeForm={this.closeForm}
-            getComponentId={this.getComponentId}
           />
           <RenderedGeneralInfo
             state={this.state}
@@ -163,7 +161,16 @@ export class App extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
-          <RenderedEducation state={this.state} />
+          <FormEducationEdit
+            handleEdit={this.handleEdit}
+            handleChange={this.handleChange}
+            closeForm={this.closeForm}
+          />
+          <RenderedEducation
+            state={this.state}
+            openForm={this.openForm}
+            setComponentId={this.setComponentId}
+          />
         </div>
 
         <div className="experience">

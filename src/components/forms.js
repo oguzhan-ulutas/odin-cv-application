@@ -212,6 +212,74 @@ export class FormEducation extends Component {
   }
 }
 
+export class FormEducationEdit extends Component {
+  render() {
+    return (
+      <div className="form-education-edit">
+        <form
+          id="form-education-edit"
+          onSubmit={(e) => {
+            this.props.handleEdit(e, "education", "educations");
+          }}
+        >
+          <div>
+            <label htmlFor="institution">INSTITUTION</label>
+            <input
+              type="text"
+              id="institution"
+              name="institution"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "institution");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-from">START DATE</label>
+            <input
+              type="date"
+              id="date-from"
+              name="date-from"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "dateFrom");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="date-to">END DATE</label>
+            <input
+              type="date"
+              id="date-to"
+              name="date-to"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "dateTo");
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="qualification">QUALIFICATION</label>
+            <input
+              type="text"
+              id="qualification"
+              name="qualification"
+              onChange={(e) => {
+                this.props.handleChange(e, "education", "qualification");
+              }}
+            />
+          </div>
+          <button
+            type="submit"
+            onClick={() => {
+              this.props.closeForm("form-education-edit");
+            }}
+          >
+            Edit
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
 export class FormExperience extends Component {
   render() {
     return (

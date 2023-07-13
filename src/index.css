@@ -56,6 +56,7 @@ code {
 #form-general,
 #form-general-edit,
 #form-education,
+#form-education-edit,
 #form-experience {
   display: flex;
   flex-direction: column;
@@ -68,6 +69,7 @@ code {
 #form-general div,
 #form-general-edit div,
 #form-education div,
+#form-education-edit div,
 #form-experience div {
   display: flex;
   flex-direction: column;
@@ -78,6 +80,7 @@ code {
 .form-general,
 .form-general-edit,
 .form-education,
+.form-education-edit,
 .form-experience {
   position: fixed;
   top: 50%;
@@ -93,6 +96,7 @@ code {
 .form-general.active,
 .form-general-edit.active,
 .form-education.active,
+.form-education-edit.active,
 .form-experience.active {
   transform: translate(-50%, -50%) scale(1);
 }

@@ -69,7 +69,13 @@ const RenderedEducation = (props) => {
               <div>{qualification}</div>{" "}
             </div>
             <div>
-              <button onClick={() => this.openForm("form-general")}>
+              <button
+                className={`edit-${id}`}
+                onClick={(e) => {
+                  props.openForm("form-education-edit");
+                  props.setComponentId(e);
+                }}
+              >
                 Edit
               </button>
               <button>Delete</button>
