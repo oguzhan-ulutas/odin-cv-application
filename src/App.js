@@ -148,7 +148,7 @@ export class App extends Component {
         <h1 className="header">CV App</h1>
         <div className="general-info">
           <div>
-            <h2>General Info</h2>
+            <h1>General Info</h1>
             <button onClick={() => this.openForm("form-general")}>Add</button>
           </div>
           <FormGeneralInfo
@@ -171,7 +171,7 @@ export class App extends Component {
 
         <div className="education">
           <div>
-            <h2>Education</h2>
+            <h1>Education</h1>
             <button onClick={() => this.openForm("form-education")}>Add</button>
           </div>
           <FormEducation
@@ -194,7 +194,7 @@ export class App extends Component {
 
         <div className="experience">
           <div>
-            <h2>Experience</h2>
+            <h1>Experience</h1>
             <button onClick={() => this.openForm("form-experience")}>
               Add
             </button>
