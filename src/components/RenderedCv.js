@@ -86,7 +86,15 @@ const RenderedEducation = (props) => {
               >
                 Edit
               </button>
-              <button className={`dele-${id}`}>Delete</button>
+              <button
+                className={`dele-${id}`}
+                onClick={(e) => {
+                  props.setComponentId(e);
+                  props.handleDelete("education", "educations");
+                }}
+              >
+                Delete
+              </button>
             </div>
           </div>
         );
@@ -135,8 +143,9 @@ const RenderedExperience = (props) => {
               </button>
               <button
                 className={`dele-${id}`}
-                onClick={() => {
-                  props.setComponentId();
+                onClick={(e) => {
+                  props.setComponentId(e);
+                  props.handleDelete("experience", "experiences");
                 }}
               >
                 Delete
