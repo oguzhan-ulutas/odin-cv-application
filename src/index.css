@@ -50,7 +50,7 @@ code {
 .education,
 .experience {
   flex-grow: 1;
-  border-bottom: solid 1px #f4f4;
+  border-bottom: solid 3px #f4f4;
 }
 
 #form-general,
@@ -103,4 +103,34 @@ code {
 .form-experience.active,
 .form-experience-edit.active {
   transform: translate(-50%, -50%) scale(1);
+}
+
+button {
+  border: none;
+  border-radius: 1rem;
+  min-width: 8rem;
+}
+
+button:hover {
+  background-color: white;
+}
+
+.section {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: solid 1px #e5ffde;
+  padding: 1rem;
+}
+
+.section-part {
+  display: grid;
+  grid-template-columns: 15rem 30rem;
+  gap: 10rem;
+}
+
+.section-head {
+  font-weight: 700;
 }

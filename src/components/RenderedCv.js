@@ -8,24 +8,23 @@ const RenderedGeneralInfo = (props) => {
       {generalInfos.map((generalInfo) => {
         const { id, firstName, lastName, eMail, tel } = generalInfo;
         return (
-          <div key={id}>
-            <div>
-              <div>Name :</div>
-              <div>{firstName}</div>{" "}
+          <div key={id} className="section">
+            <div className="section-part">
+              <div className="section-head">Name : </div> <div>{firstName}</div>{" "}
             </div>
-            <div>
-              <div>Last Name :</div>
+            <div className="section-part">
+              <div className="section-head">Last Name :</div>
               <div>{lastName}</div>{" "}
             </div>
-            <div>
-              <div>E-mail :</div>
+            <div className="section-part">
+              <div className="section-head">E-mail :</div>
               <div>{eMail}</div>{" "}
             </div>
-            <div>
-              <div>Tel :</div>
+            <div className="section-part">
+              <div className="section-head">Tel :</div>
               <div>{tel}</div>{" "}
             </div>
-            <div>
+            <div className="section-part-button">
               <button
                 className={`edit-${id}`}
                 onClick={(e) => {
@@ -59,24 +58,24 @@ const RenderedEducation = (props) => {
       {educations.map((education) => {
         const { id, institution, dateFrom, dateTo, qualification } = education;
         return (
-          <div key={id}>
-            <div>
-              <div>Institution :</div>
+          <div key={id} className="section">
+            <div className="section-part">
+              <div className="section-head">Institution :</div>
               <div>{institution}</div>{" "}
             </div>
-            <div>
-              <div>Start Date :</div>
+            <div className="section-part">
+              <div className="section-head">Start Date :</div>
               <div>{dateFrom}</div>{" "}
             </div>
-            <div>
-              <div>End Date :</div>
+            <div className="section-part">
+              <div className="section-head">End Date :</div>
               <div>{dateTo}</div>{" "}
             </div>
-            <div>
-              <div>Qualification :</div>
+            <div className="section-part">
+              <div className="section-head">Qualification :</div>
               <div>{qualification}</div>{" "}
             </div>
-            <div>
+            <div className="section-part-button">
               <button
                 className={`edit-${id}`}
                 onClick={(e) => {
@@ -110,28 +109,28 @@ const RenderedExperience = (props) => {
       {experiences.map((experience) => {
         const { id, company, title, dateFrom, dateTo, tasks } = experience;
         return (
-          <div key={id}>
-            <div>
-              <div>Company :</div>
-              <div>{company}</div>{" "}
+          <div key={id} className="section">
+            <div className="section-part">
+              <div className="section-head">Company :</div>
+              <div>{company}</div>
             </div>
-            <div>
-              <div>Title :</div>
-              <div>{title}</div>{" "}
+            <div className="section-part">
+              <div className="section-head">Title :</div>
+              <div>{title}</div>
             </div>
-            <div>
-              <div>Start Date :</div>
-              <div>{dateFrom}</div>{" "}
+            <div className="section-part">
+              <div className="section-head">Start Date :</div>
+              <div>{dateFrom}</div>
             </div>
-            <div>
-              <div>End Date :</div>
+            <div className="section-part">
+              <div className="section-head">End Date :</div>
               <div>{dateTo}</div>{" "}
             </div>
-            <div>
-              <div>Tasks :</div>
+            <div className="section-part">
+              <div className="section-head">Tasks :</div>
               <div>{tasks}</div>{" "}
             </div>
-            <div>
+            <div className="section-part-button">
               <button
                 className={`edit-${id}`}
                 onClick={(e) => {
