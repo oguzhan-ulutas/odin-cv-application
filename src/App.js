@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/Footer";
 import {
@@ -15,38 +15,36 @@ import {
   RenderedExperience,
 } from "./components/RenderedCv";
 
-export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      generalInfo: {
-        id: uniqid(),
-        firstName: "",
-        lastName: "",
-        eMail: "",
-        tel: "",
-      },
-      education: {
-        id: uniqid(),
-        institution: "",
-        dateFrom: "",
-        dateTo: "",
-        qualification: "",
-      },
-      experience: {
-        id: uniqid(),
-        company: "",
-        title: "",
-        dateFrom: "",
-        dateTo: "",
-        tasks: "",
-      },
-      educations: [],
-      experiences: [],
-      generalInfos: [],
-    };
-    this.componentId = "";
-  }
+const App =()=> {
+  const [state, setState]= useState({
+    generalInfo: {
+      id: uniqid(),
+      firstName: "",
+      lastName: "",
+      eMail: "",
+      tel: "",
+    },
+    education: {
+      id: uniqid(),
+      institution: "",
+      dateFrom: "",
+      dateTo: "",
+      qualification: "",
+    },
+    experience: {
+      id: uniqid(),
+      company: "",
+      title: "",
+      dateFrom: "",
+      dateTo: "",
+      tasks: "",
+    },
+    educations: [],
+    experiences: [],
+    generalInfos: [],
+    componentId : ""
+  };)
+  
   // Opens related form
   openForm = (formClass) => {
     const formDiv = document.querySelector(`.${formClass}`);
@@ -142,7 +140,7 @@ export class App extends Component {
     console.log(this.state);
   };
 
-  render() {
+  
     return (
       <div className="container">
         <h1 className="header">CV App</h1>
@@ -220,6 +218,6 @@ export class App extends Component {
       </div>
     );
   }
-}
+
 
 export default App;
