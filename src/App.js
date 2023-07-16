@@ -14,9 +14,10 @@ import {
   RenderedEducation,
   RenderedExperience,
 } from "./components/RenderedCv";
+import GeneralInfoSection from "./components/sections/GeneralInfoSection";
 
-const App =()=> {
-  const [state, setState]= useState({
+const App = () => {
+  const [state, setState] = useState({
     generalInfo: {
       id: uniqid(),
       firstName: "",
@@ -42,30 +43,30 @@ const App =()=> {
     educations: [],
     experiences: [],
     generalInfos: [],
-    componentId : ""
-  };)
-  
+    componentId: "",
+  });
+
   // Opens related form
-  openForm = (formClass) => {
+  const openForm = (formClass) => {
     const formDiv = document.querySelector(`.${formClass}`);
     formDiv.classList.add("active");
   };
 
-  closeForm = (formClass) => {
+  const closeForm = (formClass) => {
     const formDiv = document.querySelector(`.${formClass}`);
     formDiv.classList.remove("active");
   };
 
-  handleChange = (e, section, field) => {
-    const keys = Object.keys(this.state[section]);
+  const handleChange = (e, section, field) => {
+    const keys = Object.keys(state[section]);
     const keysRest = keys.filter((item) => item !== field);
 
     let objRest = {};
     keysRest.forEach((key) => {
-      objRest[key] = this.state[section][key];
+      objRest[key] = state[section][key];
     });
 
-    this.setState({
+    setState({
       [section]: Object.assign(
         {},
         {
@@ -76,42 +77,40 @@ const App =()=> {
     });
   };
 
-  handleSubmit = (e, section, arraySection) => {
+  const handleSubmit = (e, section, arraySection) => {
     e.preventDefault();
 
-    const keys = Object.keys(this.state[section]).filter(
-      (item) => item !== "id"
-    );
+    const keys = Object.keys(state[section]).filter((item) => item !== "id");
 
     let obj = {};
     keys.forEach((key) => (obj[key] = ""));
 
     this.setState({
-      [arraySection]: [...this.state[arraySection], this.state[section]],
+      [arraySection]: [...state[arraySection], state[section]],
       [section]: Object.assign({}, { id: uniqid() }, obj),
     });
   };
 
-  setComponentId = (e) => {
+  const setComponentId = (e) => {
     this.componentId = e.target.className.substr(5);
   };
 
-  getComponentId = () => this.componentId;
+  const getComponentId = () => state.componentId;
 
-  handleEdit = (e, section, arraySection) => {
+  const handleEdit = (e, section, arraySection) => {
     e.preventDefault();
-    this.state[arraySection].forEach((item, i, arr) => {
+    state[arraySection].forEach((item, i, arr) => {
       if (item.id === this.getComponentId()) {
         const array = arr;
-        array[i] = this.state[section];
+        array[i] = state[section];
 
-        const keys = Object.keys(this.state[section]).filter(
+        const keys = Object.keys(state[section]).filter(
           (item) => item !== "id"
         );
 
         let obj = {};
         keys.forEach((key) => (obj[key] = ""));
-        this.setState({
+        setState({
           [arraySection]: array,
           [section]: Object.assign({}, { id: uniqid() }, obj),
         });
@@ -119,16 +118,16 @@ const App =()=> {
     });
   };
 
-  handleDelete = (section, arraySection) => {
-    this.state[arraySection].forEach((item, i, arr) => {
-      if (item.id === this.getComponentId()) {
-        const keys = Object.keys(this.state[section]).filter(
+  const handleDelete = (section, arraySection) => {
+    state[arraySection].forEach((item, i, arr) => {
+      if (item.id === getComponentId()) {
+        const keys = Object.keys(state[section]).filter(
           (item) => item !== "id"
         );
         let obj = {};
         keys.forEach((key) => (obj[key] = ""));
 
-        this.setState({
+        setState({
           [arraySection]: arr.filter((value) => value !== item),
           [section]: Object.assign({}, { id: uniqid() }, obj),
         });
@@ -136,88 +135,72 @@ const App =()=> {
     });
   };
 
-  logger = () => {
-    console.log(this.state);
+  const logger = () => {
+    console.log(state);
   };
 
-  
-    return (
-      <div className="container">
-        <h1 className="header">CV App</h1>
-        <div className="general-info">
-          <div>
-            <h1>General Info</h1>
-            <button onClick={() => this.openForm("form-general")}>Add</button>
-          </div>
-          <FormGeneralInfo
-            closeForm={this.closeForm}
-            handleSubmit={this.handleSubmit}
-            handleChange={this.handleChange}
-          />
-          <FormGeneralInfoEdit
-            handleEdit={this.handleEdit}
-            handleChange={this.handleChange}
-            closeForm={this.closeForm}
-          />
-          <RenderedGeneralInfo
-            state={this.state}
-            openForm={this.openForm}
-            setComponentId={this.setComponentId}
-            handleDelete={this.handleDelete}
-          />
-        </div>
+  return (
+    <div className="container">
+      <h1 className="header">CV App</h1>
+      <GeneralInfoSection
+        state={state}
+        openForm={openForm}
+        closeForm={closeForm}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        handleEdit={handleEdit}
+        setComponentId={setComponentId}
+        handleDelete={handleDelete}
+      />
 
-        <div className="education">
-          <div>
-            <h1>Education</h1>
-            <button onClick={() => this.openForm("form-education")}>Add</button>
-          </div>
-          <FormEducation
-            closeForm={this.closeForm}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-          <FormEducationEdit
-            handleEdit={this.handleEdit}
-            handleChange={this.handleChange}
-            closeForm={this.closeForm}
-          />
-          <RenderedEducation
-            state={this.state}
-            openForm={this.openForm}
-            setComponentId={this.setComponentId}
-            handleDelete={this.handleDelete}
-          />
+      <div className="education">
+        <div>
+          <h1>Education</h1>
+          <button onClick={() => openForm("form-education")}>Add</button>
         </div>
-
-        <div className="experience">
-          <div>
-            <h1>Experience</h1>
-            <button onClick={() => this.openForm("form-experience")}>
-              Add
-            </button>
-          </div>
-          <FormExperience
-            closeForm={this.closeForm}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-          <FormExperienceEdit
-            handleEdit={this.handleEdit}
-            handleChange={this.handleChange}
-            closeForm={this.closeForm}
-          />
-          <RenderedExperience
-            state={this.state}
-            openForm={this.openForm}
-            setComponentId={this.setComponentId}
-            handleDelete={this.handleDelete}
-          />
-        </div>
-        <Footer />
+        <FormEducation
+          closeForm={closeForm}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+        <FormEducationEdit
+          handleEdit={handleEdit}
+          handleChange={handleChange}
+          closeForm={closeForm}
+        />
+        <RenderedEducation
+          state={state}
+          openForm={openForm}
+          setComponentId={setComponentId}
+          handleDelete={handleDelete}
+        />
       </div>
-    );
-  }
 
+      <div className="experience">
+        <div>
+          <h1>Experience</h1>
+          <button onClick={() => openForm("form-experience")}>Add</button>
+        </div>
+        <FormExperience
+          closeForm={closeForm}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+        <FormExperienceEdit
+          handleEdit={handleEdit}
+          handleChange={handleChange}
+          closeForm={closeForm}
+        />
+        <RenderedExperience
+          state={state}
+          openForm={openForm}
+          setComponentId={setComponentId}
+          handleDelete={handleDelete}
+        />
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
