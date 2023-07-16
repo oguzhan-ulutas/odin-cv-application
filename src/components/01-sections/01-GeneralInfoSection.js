@@ -14,7 +14,7 @@ const GeneralInfoSection = (props) => {
     setComponentId,
     handleDelete,
   } = props;
-  console.log(props);
+
   return (
     <div className="general-info">
       <div>
