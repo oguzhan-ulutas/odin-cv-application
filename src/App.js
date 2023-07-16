@@ -16,6 +16,7 @@ import {
 } from "./components/RenderedCv";
 import GeneralInfoSection from "./components/01-sections/01-GeneralInfoSection";
 import EducationSection from "./components/01-sections/02-EducationSection";
+import ExperienceSection from "./components/01-sections/03-ExperienceSection";
 
 const App = () => {
   const [state, setState] = useState({
@@ -165,28 +166,17 @@ const App = () => {
         handleDelete={handleDelete}
       />
 
-      <div className="experience">
-        <div>
-          <h1>Experience</h1>
-          <button onClick={() => openForm("form-experience")}>Add</button>
-        </div>
-        <FormExperience
-          closeForm={closeForm}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
-        <FormExperienceEdit
-          handleEdit={handleEdit}
-          handleChange={handleChange}
-          closeForm={closeForm}
-        />
-        <RenderedExperience
-          state={state}
-          openForm={openForm}
-          setComponentId={setComponentId}
-          handleDelete={handleDelete}
-        />
-      </div>
+      <ExperienceSection
+        state={state}
+        openForm={openForm}
+        closeForm={closeForm}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        handleEdit={handleEdit}
+        setComponentId={setComponentId}
+        handleDelete={handleDelete}
+      />
+
       <Footer />
     </div>
   );
