@@ -33,7 +33,6 @@ const App = () => {
     educations: [],
     experiences: [],
     generalInfos: [],
-    componentId: "",
   });
 
   // Opens related form
@@ -83,11 +82,13 @@ const App = () => {
     });
   };
 
+  let componentId = "";
+
   const setComponentId = (e) => {
-    setState({ ...state, componentId: e.target.className.substr(5) });
+    componentId = e.target.className.substr(5);
   };
 
-  const getComponentId = () => state.componentId;
+  const getComponentId = () => componentId;
 
   const handleEdit = (e, section, arraySection) => {
     e.preventDefault();
@@ -127,10 +128,6 @@ const App = () => {
         });
       }
     });
-  };
-
-  const logger = () => {
-    console.log(state);
   };
 
   return (

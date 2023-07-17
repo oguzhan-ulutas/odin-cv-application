@@ -1,8 +1,8 @@
 import React from "react";
 
-import { RenderedGeneralInfo } from "../RenderedCv";
 import FormGeneralInfo from "../02-forms/01-info-forms/01-FormGeneralInfo";
 import FormGeneralInfoEdit from "../02-forms/02-edit-forms/01-FormGeneralInfoEdit";
+import RenderedGeneralInfo from "../03-rendered-cv-parts/01-RenderedGeneralInfo";
 
 const GeneralInfoSection = (props) => {
   const {

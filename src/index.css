@@ -37,6 +37,7 @@ code {
   font-weight: 600;
   flex-grow: 0;
   padding: 1rem;
+  text-align: center;
 }
 .header {
   font-size: 5rem;
