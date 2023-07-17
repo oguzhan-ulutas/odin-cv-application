@@ -164,6 +164,7 @@ const App = () => {
         handleChange={handleChange}
         handleEdit={handleEdit}
         setComponentId={setComponentId}
+        setComponentIdDelete={setComponentIdDelete}
         handleDelete={handleDelete}
       />
 
@@ -175,6 +176,7 @@ const App = () => {
         handleChange={handleChange}
         handleEdit={handleEdit}
         setComponentId={setComponentId}
+        setComponentIdDelete={setComponentIdDelete}
         handleDelete={handleDelete}
       />
 

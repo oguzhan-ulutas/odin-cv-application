@@ -1,8 +1,8 @@
 import React from "react";
 
-import { RenderedExperience } from "../RenderedCv";
 import FormExperience from "../02-forms/01-info-forms/03-FormExperience";
 import FormExperienceEdit from "../02-forms/02-edit-forms/03-FormExperienceEdit";
+import RenderedExperience from "../03-rendered-cv-parts/03-RenderedExperience";
 
 const ExperienceSection = (props) => {
   const {
@@ -13,6 +13,7 @@ const ExperienceSection = (props) => {
     handleChange,
     handleEdit,
     setComponentId,
+    setComponentIdDelete,
     handleDelete,
   } = props;
 
@@ -36,6 +37,7 @@ const ExperienceSection = (props) => {
         state={state}
         openForm={openForm}
         setComponentId={setComponentId}
+        setComponentIdDelete={setComponentIdDelete}
         handleDelete={handleDelete}
       />
     </div>

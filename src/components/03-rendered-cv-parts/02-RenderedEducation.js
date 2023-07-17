@@ -1,7 +1,13 @@
 import React from "react";
 
 const RenderedEducation = (props) => {
-  const { state, openForm, setComponentId, handleDelete } = props;
+  const {
+    state,
+    openForm,
+    setComponentId,
+    setComponentIdDelete,
+    handleDelete,
+  } = props;
   return (
     <div className="educations-div">
       {state.educations.map((education) => {
@@ -37,7 +43,7 @@ const RenderedEducation = (props) => {
               <button
                 className={`dele-${id}`}
                 onClick={(e) => {
-                  setComponentId(e);
+                  setComponentIdDelete(e);
                   handleDelete("education", "educations");
                 }}
               >
