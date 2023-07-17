@@ -1,11 +1,11 @@
 import React from "react";
 
 const RenderedGeneralInfo = (props) => {
-  const { generalInfos } = props.state;
+  const { state, openForm, setComponentId, handleDelete } = props;
 
   return (
     <div className="general-info-div">
-      {generalInfos.map((generalInfo) => {
+      {state.generalInfos.map((generalInfo) => {
         const { id, firstName, lastName, eMail, tel } = generalInfo;
         return (
           <div key={id} className="section">
@@ -28,8 +28,8 @@ const RenderedGeneralInfo = (props) => {
               <button
                 className={`edit-${id}`}
                 onClick={(e) => {
-                  props.openForm("form-general-edit");
-                  props.setComponentId(e);
+                  openForm("form-general-edit");
+                  setComponentId(e);
                 }}
               >
                 Edit
@@ -37,8 +37,8 @@ const RenderedGeneralInfo = (props) => {
               <button
                 className={`dele-${id}`}
                 onClick={(e) => {
-                  props.setComponentId(e);
-                  props.handleDelete("generalInfo", "generalInfos");
+                  setComponentId(e);
+                  handleDelete("generalInfo", "generalInfos");
                 }}
               >
                 Delete

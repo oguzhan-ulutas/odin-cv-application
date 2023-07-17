@@ -1,19 +1,7 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
 import Footer from "./components/Footer";
-import {
-  FormGeneralInfo,
-  FormGeneralInfoEdit,
-  FormEducation,
-  FormEducationEdit,
-  FormExperience,
-  FormExperienceEdit,
-} from "./components/Forms";
-import {
-  RenderedGeneralInfo,
-  RenderedEducation,
-  RenderedExperience,
-} from "./components/RenderedCv";
+
 import GeneralInfoSection from "./components/01-sections/01-GeneralInfoSection";
 import EducationSection from "./components/01-sections/02-EducationSection";
 import ExperienceSection from "./components/01-sections/03-ExperienceSection";
@@ -69,6 +57,7 @@ const App = () => {
     });
 
     setState({
+      ...state,
       [section]: Object.assign(
         {},
         {
@@ -87,14 +76,15 @@ const App = () => {
     let obj = {};
     keys.forEach((key) => (obj[key] = ""));
 
-    this.setState({
+    setState({
+      ...state,
       [arraySection]: [...state[arraySection], state[section]],
       [section]: Object.assign({}, { id: uniqid() }, obj),
     });
   };
 
   const setComponentId = (e) => {
-    this.componentId = e.target.className.substr(5);
+    setState({ ...state, componentId: e.target.className.substr(5) });
   };
 
   const getComponentId = () => state.componentId;
@@ -113,6 +103,7 @@ const App = () => {
         let obj = {};
         keys.forEach((key) => (obj[key] = ""));
         setState({
+          ...state,
           [arraySection]: array,
           [section]: Object.assign({}, { id: uniqid() }, obj),
         });
@@ -130,6 +121,7 @@ const App = () => {
         keys.forEach((key) => (obj[key] = ""));
 
         setState({
+          ...state,
           [arraySection]: arr.filter((value) => value !== item),
           [section]: Object.assign({}, { id: uniqid() }, obj),
         });

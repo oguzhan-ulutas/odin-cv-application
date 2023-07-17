@@ -1,7 +1,8 @@
 import React from "react";
 
-import { FormGeneralInfo, FormGeneralInfoEdit } from "../Forms";
+import { FormGeneralInfoEdit } from "../Forms";
 import { RenderedGeneralInfo } from "../RenderedCv";
+import FormGeneralInfo from "../02-forms/01-info-forms/01-FormGeneralInfo";
 
 const GeneralInfoSection = (props) => {
   const {
@@ -22,6 +23,7 @@ const GeneralInfoSection = (props) => {
         <button onClick={() => openForm("form-general")}>Add</button>
       </div>
       <FormGeneralInfo
+        state={state}
         closeForm={closeForm}
         handleSubmit={handleSubmit}
         handleChange={handleChange}
