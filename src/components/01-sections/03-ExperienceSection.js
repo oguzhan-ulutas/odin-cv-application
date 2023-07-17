@@ -1,7 +1,8 @@
 import React from "react";
-import { FormExperienceEdit } from "../Forms";
+
 import { RenderedExperience } from "../RenderedCv";
 import FormExperience from "../02-forms/01-info-forms/03-FormExperience";
+import FormExperienceEdit from "../02-forms/02-edit-forms/03-FormExperienceEdit";
 
 const ExperienceSection = (props) => {
   const {
