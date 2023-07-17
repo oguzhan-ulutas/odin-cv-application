@@ -92,7 +92,7 @@ const App = () => {
   const handleEdit = (e, section, arraySection) => {
     e.preventDefault();
     state[arraySection].forEach((item, i, arr) => {
-      if (item.id === this.getComponentId()) {
+      if (item.id === getComponentId()) {
         const array = arr;
         array[i] = state[section];
 
