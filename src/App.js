@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import uniqid from "uniqid";
-import Footer from "./components/Footer";
+import Footer from "./components/04-footer/Footer";
 
 import GeneralInfoSection from "./components/01-sections/01-GeneralInfoSection";
 import EducationSection from "./components/01-sections/02-EducationSection";
