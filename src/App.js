@@ -82,19 +82,18 @@ const App = () => {
     });
   };
 
-  let componentId = "";
+  const [componentId, changeComponentId] = useState("");
 
   const setComponentId = (e) => {
-    componentId = e.target.className.substr(5);
+    changeComponentId(e.target.className.substr(5));
   };
-
-  const getComponentId = () => componentId;
 
   const handleEdit = (e, section, arraySection) => {
     e.preventDefault();
+
     state[arraySection].forEach((item, i, arr) => {
-      if (item.id === getComponentId()) {
-        const array = arr;
+      if (item.id === componentId) {
+        const array = [...arr];
         array[i] = state[section];
 
         const keys = Object.keys(state[section]).filter(
@@ -112,9 +111,21 @@ const App = () => {
     });
   };
 
+  // I planned to use componentId for both edit and delete a component. But
+  // when it works in edit it does not work in delete or vice versa.
+  // It maybe a React based problem. When I define componentId as a state,
+  // it does not work on delete.
+
+  let componentIdDelete = "";
+  const setComponentIdDelete = (e) => {
+    componentIdDelete = e.target.className.substr(5);
+  };
+
+  const getComponentIdDelete = () => componentIdDelete;
+
   const handleDelete = (section, arraySection) => {
     state[arraySection].forEach((item, i, arr) => {
-      if (item.id === getComponentId()) {
+      if (item.id === getComponentIdDelete()) {
         const keys = Object.keys(state[section]).filter(
           (item) => item !== "id"
         );
@@ -141,6 +152,7 @@ const App = () => {
         handleChange={handleChange}
         handleEdit={handleEdit}
         setComponentId={setComponentId}
+        setComponentIdDelete={setComponentIdDelete}
         handleDelete={handleDelete}
       />
 

@@ -1,8 +1,8 @@
 import React from "react";
 
-import { RenderedEducation } from "../RenderedCv";
 import FormEducation from "../02-forms/01-info-forms/02-FormEducation";
 import FormEducationEdit from "../02-forms/02-edit-forms/02-FormEducationEdit";
+import RenderedEducation from "../03-rendered-cv-parts/02-RenderedEducation";
 
 const EducationSection = (props) => {
   const {

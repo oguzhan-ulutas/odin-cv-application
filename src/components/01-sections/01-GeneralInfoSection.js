@@ -13,6 +13,7 @@ const GeneralInfoSection = (props) => {
     handleChange,
     handleEdit,
     setComponentId,
+    setComponentIdDelete,
     handleDelete,
   } = props;
 
@@ -36,6 +37,7 @@ const GeneralInfoSection = (props) => {
         state={state}
         openForm={openForm}
         setComponentId={setComponentId}
+        setComponentIdDelete={setComponentIdDelete}
         handleDelete={handleDelete}
       />
     </div>

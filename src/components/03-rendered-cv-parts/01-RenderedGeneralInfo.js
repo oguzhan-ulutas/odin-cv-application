@@ -1,7 +1,13 @@
 import React from "react";
 
 const RenderedGeneralInfo = (props) => {
-  const { state, openForm, setComponentId, handleDelete } = props;
+  const {
+    state,
+    openForm,
+    setComponentId,
+    handleDelete,
+    setComponentIdDelete,
+  } = props;
 
   return (
     <div className="general-info-div">
@@ -37,7 +43,7 @@ const RenderedGeneralInfo = (props) => {
               <button
                 className={`dele-${id}`}
                 onClick={(e) => {
-                  setComponentId(e);
+                  setComponentIdDelete(e);
                   handleDelete("generalInfo", "generalInfos");
                 }}
               >
