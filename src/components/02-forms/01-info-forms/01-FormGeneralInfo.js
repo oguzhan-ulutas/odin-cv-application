@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const FormGeneralInfo = (props) => {
-  const { state, closeForm, handleChange, handleSubmit } = props;
+  const { closeForm, handleChange, handleSubmit } = props;
 
   return (
     <div className="form-general">

@@ -23,7 +23,6 @@ const GeneralInfoSection = (props) => {
         <button onClick={() => openForm("form-general")}>Add</button>
       </div>
       <FormGeneralInfo
-        state={state}
         closeForm={closeForm}
         handleSubmit={handleSubmit}
         handleChange={handleChange}
